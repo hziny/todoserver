@@ -6,15 +6,15 @@ const router = express.Router();
 const controller = require("../controllers/todo");
 
 //getday
-router.get("/:date", controller.getToDoTaskForTheDay);
+router.get("/:date", controller.getDailyToDoTask);
 
 // Write
 router.post("/write", controller.addTodoTask); // http://localhost:3000/todo/write
 
 // Update
-router.post("/update/:id", controller.updateTask);
+router.post("/update/:id", controller.updateToDoTask);
 
 // Remove
-router.get("/delete/:id", controller.deleteTask);
+router.get("/delete/:id", controller.deleteToDoTask);
 
 module.exports = router;

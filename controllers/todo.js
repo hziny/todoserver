@@ -8,7 +8,7 @@ moment.tz.setDefault("Asia/Seoul");
 // Controller - 서비스 로직
 
 // 그날에 맞는 할일 가져오기
-exports.getToDoTaskForTheDay = async function (req, res) {
+exports.getDailyToDoTask = async function (req, res) {
   const date = req.params.date;
   TodoTask.find({ date: date }, null, { sort: { date: -1 } }, (err, tasks) => {
     return res.status(200).json({ success: "SUCCESS", data: tasks });
@@ -35,7 +35,7 @@ exports.addTodoTask = async function (req, res) {
 };
 
 // 완료 수정
-exports.updateTask = function (req, res) {
+exports.updateToDoTask = function (req, res) {
   const id = req.params.id;
   const done = req.body.done;
 
@@ -65,7 +65,7 @@ exports.updateTask = function (req, res) {
 };
 
 //삭제
-exports.deleteTask = function (req, res) {
+exports.deleteToDoTask = function (req, res) {
   const id = req.params.id;
   TodoTask.findByIdAndRemove(id, (err) => {
     if (err) {
